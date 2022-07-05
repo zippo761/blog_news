@@ -1,18 +1,13 @@
-<li>
-  <ol class="posts">
-    <% @post.comments.each do |comment| %>
-      <li>
-        <article class="article-container-full">
-          <%=  comment.username%>
-          <hr>
-          <%= comment.content %>
-          <hr>
-          <p>
-            <%= button_to "Delete Comment", [@post ,comment], :confirm => "Are you sure?", :method => :delete%>
-          </p>
-        </article>
-        <br>
-      </li>
-      </ol>
-    <% end %>
-    </li>
+<h3>Все комментарии</h3>
+<% @post.comments.each do |comments| %>
+  <div class="alert alert-light">
+    <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
+  </div>
+
+  <div>
+    <p><%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
+                     :method => :delete,
+                     data: {confirm: 'Are you sure?'},
+                     :class => 'btn btn-danger' %></p>
+  </div>
+<% end %>
