@@ -9,13 +9,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html{ redirect_to posts_path}
+      format.html{ redirect_to post_path}
     end
   end
 
-  def show
-    @comments = @post.comment.all.order(created_at: :desc)
-  end
 
   private def comment_params
     params.require(:comment).permit(:username, :content)
