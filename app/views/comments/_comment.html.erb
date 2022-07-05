@@ -1,21 +1,18 @@
-<div id="comment-<%= comment.id %>">
-  <div class="panel panel-default">
-
-    <p><strong><%=comment.username %></strong>
-
-    <div class="panel-body">
-      <%= comment.content %>
-    </div>
-
-    <div class="panel-body">
-      <%= link_to 'Редактировать', edit_post_comment_path(id: comment, post_id: comment.post), :class => "btn btn-success" %>
-
-      <%= button_to 'Удалить',
-                    post_comment_path(id: comment, post_id: comment.post),
-                    method: :delete,
-                    data: { confirm: 'Удалить запись?' },
-                    :class => "btn btn-warning"%>
-    </div>
-  </div>
-</div>
-
+<li>
+  <ol class="posts">
+    <% @post.comments.each do |comment| %>
+      <li>
+        <article class="article-container-full">
+          <%=  comment.username%>
+          <hr>
+          <%= comment.content %>
+          <hr>
+          <p>
+            <%= button_to "Delete Comment", [@post ,comment], :confirm => "Are you sure?", :method => :delete%>
+          </p>
+        </article>
+        <br>
+      </li>
+      </ol>
+    <% end %>
+    </li>

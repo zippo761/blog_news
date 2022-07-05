@@ -10,11 +10,16 @@
 </div>
 
 <hr>
+
 <h1>Все комментарии</h1>
 
-<% @post.comments.each do |comment| %>
+<% @post.comments.each do |comments| %>
   <div class="alert alert-light">
-    <p><strong><%=comment.username  %></strong>: <%= comment.content %></p>
+    <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
+  </div>
+
+  <div class="alert alert-warning">
+    <p><%= button_to 'Удалить комментарий', post_comment_path(@post, comments), :method => :delete, data: {confirm: 'Are you sure?'}%></p>
   </div>
 
 <% end %>
@@ -32,7 +37,5 @@
   <p>
     <%= f.submit("Добавить комментарий", {:class => 'btn btn-warning'}) %>
   </p>
-
-
 
 <% end %>
