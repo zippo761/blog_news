@@ -3,19 +3,23 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
 
-    if @comment.save
-      flash[:success] = 'Комментарий создан'
-      redirect_to post_url(@post)
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_comments_url(@comment), notice: 'Комментарий создан' }
+        format.json { head :no_content }
+      end
     end
   end
+
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
+
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @post, notice: "Комментарий удален" }
+      format.html { redirect_to request.referrer, notice: 'Комментарий удален' }
       format.json { head :no_content }
     end
 
