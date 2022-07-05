@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.all
   end
 
   # GET /posts/new
@@ -54,6 +55,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    @comment = Comment.find(params[:post_id])
+
+    @comment.destroy
     @post.destroy
 
     respond_to do |format|
