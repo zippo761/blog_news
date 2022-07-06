@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @post = Post.find(params[:id])
     #@comments = @post.comments.all
   end
 
@@ -20,7 +19,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
   end
 
   # POST /posts or /posts.json
@@ -40,8 +38,6 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post = Post.find(params[:id])
-
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to post_url(@post), notice: 'Пост был обновлён' }
@@ -57,7 +53,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url(@post), notice: 'Пост удалён' }
+      format.html { redirect_to posts_path, notice: 'Пост удалён' }
       format.json { head :no_content }
     end
   end

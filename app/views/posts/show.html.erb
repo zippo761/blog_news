@@ -4,7 +4,7 @@
   <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-warning" %> |
   <%= link_to "Назад ко всем постам", posts_path, :class => "btn btn-success" %>
   <hr>
-  <%= button_to "Удалить", @post, form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
+  <%= button_to "Удалить", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
 </div>
 
 <hr>
