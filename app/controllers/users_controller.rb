@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:destroy, :show_grants, :set_grants]
-  before_action :check_access, only: [:index,:show_grants, :set_grants, :destroy]
 
   include PostsHelper
 
@@ -24,6 +23,7 @@ class UsersController < ApplicationController
   def show_grants
 
   end
+
 
   # PATCH /users/1/set_grants
   def set_grants

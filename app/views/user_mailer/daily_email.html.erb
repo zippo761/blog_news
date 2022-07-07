@@ -1,0 +1,19 @@
+<h1>Ежедневная рассылка от Kit-blog.test</h1>
+
+
+<% @posts.each do |post| %>
+<div>
+  <%= link_to post.title, post %>
+  <%= link_to 'Читать...', post, :class => 'text_success' %>
+</div>
+
+<% end %>
+<br>
+<p>Хорошего дня!</p>
+<br>
+<i>С уважением, команда Kit-blog.test</i>
+
+<hr>
+<p>
+  Отписаться | На сайт
+</p>
