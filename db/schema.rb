@@ -22,17 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_112107) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "blog_post_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["blog_post_id", "created_at"], name: "index_post_comments_on_blog_post_id_and_created_at"
-    t.index ["blog_post_id"], name: "index_post_comments_on_blog_post_id"
-    t.index ["user_id"], name: "index_post_comments_on_user_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
