@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :check_owner, only: [:edit, :update, :destroy]
+
+  include PostsHelper
 
   # GET /posts or /posts.json
   def index
@@ -24,6 +27,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -68,4 +72,11 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :content)
     end
+
+def check_owner
+  unless is_owner(@post)
+    flash[:alert] = "Запрещено редактировать чужой контент"
+    redirect_to  posts_path
+  end
+end
 end
