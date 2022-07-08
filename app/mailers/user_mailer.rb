@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "Kit@blog.test"
+  default from: "Kit@blog.com"
   layout 'user_mailer'
 
   def welcome_email
@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Добро пожаловать Kit-blog.test',
+      subject: 'Добро пожаловать Kit-blog',
       )
   end
 
@@ -18,10 +18,9 @@ class UserMailer < ApplicationMailer
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Ежедневная рассылка Kit-blog.test',
+      subject: 'Ежедневная рассылка Kit-blog',
       )
   end
-
 
   def weekly_email
     @user = params[:user]

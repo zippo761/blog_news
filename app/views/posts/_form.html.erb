@@ -9,16 +9,11 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <p><%= form.label :title, 'Название', :class => 'control-label' %></p>
-    <p><%= form.text_area :title, :class => 'form-control'%></p>
-  </div>
+  <p><%= form.label :title, 'Название', :class => 'control-label' %></p>
+  <p><%= form.text_area :title, :class => 'form-control'%></p>
 
-  <div class="field form-group">
-    <p><%= form.label :content, 'Текст', :class => 'control-label'%></p>
-    <p><%= form.text_area :content, :cols => "10", :rows => "10", :class => 'form-control' %></p>
-  </div>
-
+  <p><%= form.label :content, 'Текст', :class => 'control-label'%></p>
+  <p><%= form.text_area :content, :class => 'form-control' %></p>
 
   <div class="actions">
     <p><%= form.submit "Сохранить", :class => 'btn btn-success'%></p>

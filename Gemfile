@@ -26,7 +26,6 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 
 gem 'bootstrap-email'
-
 # gem Devise
 gem 'devise'
 # Use Redis adapter to run Action Cable in production
@@ -61,7 +60,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
