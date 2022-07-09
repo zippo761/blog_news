@@ -1,13 +1,16 @@
-<h3>Все комментарии</h3>
-<% @post.comments.each do |comments| %>
-  <div class="alert alert-light">
-    <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
-  </div>
+<% if @comments.any? %>
+  <h3>Все комментарии</h3>
+  <% @post.comments.each do |comments| %>
+    <div class="alert alert-light">
+      <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
+    </div>
 
-  <div>
-    <p><%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
-                     :method => :delete,
-                     data: {confirm: 'Are you sure?'},
-                     :class => 'btn btn-danger' %></p>
-  </div>
+
+  <p>
+    <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
+                   :method => :delete,
+                   data: {confirm: 'Are you sure?'},
+                   :class => 'btn btn-danger' %>
+  </p>
+  <% end %>
 <% end %>

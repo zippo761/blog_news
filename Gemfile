@@ -22,10 +22,13 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#locale
 gem 'devise-i18n'
 gem 'rails-i18n'
 
-gem 'bootstrap-email'
+# Background Job
+gem 'sidekiq', '~> 6.5', '>= 6.5.1'
+
 # gem Devise
 gem 'devise'
 # Use Redis adapter to run Action Cable in production

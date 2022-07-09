@@ -1,0 +1,40 @@
+<h1>Права доступа для <%= @user.email %></h1>
+
+<div class="row">
+  <div class="col-sm-2 col-md-1">
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2 col-md-1">
+    <%= link_to "Назад", :back, :class => 'btn btn-primary pull-left' %>
+  </div>
+
+  <div class="col-sm-6 col-md-3 ">
+    <%= form_with(model: @user, url: set_grants_user_path(@user), html: { method: :patch }) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "ошибок") %> возникло при обновлении:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <p> f.label :role, :class => 'control-label </p>
+        <p> f.collection_select(:role_id, Role.all, :id, :name) </p>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Обновить", :class => 'btn btn-success'%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

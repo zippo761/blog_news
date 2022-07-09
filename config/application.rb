@@ -13,6 +13,10 @@ module TestBlog
 
     config.i18n.default_locale = :ru
     config.i18n.locale = :ru
+
+    # user sidekiq
+    #config.active_job.queue_adapter = :sidekiq
+    #
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

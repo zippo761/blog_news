@@ -1,35 +1,40 @@
 class UserMailer < ApplicationMailer
-  default from: "Kit@blog.com"
+  default from: 'info@blog-digest.test'
   layout 'user_mailer'
 
   def welcome_email
     @user = params[:user]
+
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Добро пожаловать Kit-blog',
+      subject: 'Добро пожаловать Blog-Digest.test!',
       )
   end
 
-  def daily_email
+  def daily_digest_email
     @user = params[:user]
-    @posts = params[:posts]
+
 
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Ежедневная рассылка Kit-blog',
+      subject: 'Ежедневная рассылка Blog-Digest.test',
       )
   end
 
-  def weekly_email
+  def weekly_digest_email
     @user = params[:user]
-    @posts = params[:posts]
+
+    @till_date = Time.parse("07:00") - 1  # сегодня
+    @from_date = @till_date - 1.week + 1
+
+    @posts = Post.where(created_at: @from_date..@till_date)
 
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Еженедельная рассылка Kit-blog.test',
+      subject: 'Еженедельная рассылка Blog-Digest.test',
       )
   end
 end

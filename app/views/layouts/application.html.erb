@@ -17,29 +17,55 @@
     <br>
     <% if user_signed_in? %>
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+
         <span
-          class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Главная страница", home_path %>
+          class="me-3 py-2 text-dark text-decoration-none">Здравствуйте, <%= link_to current_user.email, edit_user_registration_path %>
         </span>
-      <span
-        class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Добавить пост", new_post_path %>
-      </span>
-      <span
-        class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
-      </span>
+
+        <span
+          class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Главная страница", posts_path %>
+        </span>
+
+        <span
+          class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Добавить пост", new_post_path %>
+        </span>
+
+        <span
+          class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Пользователи", users_path %>
+        </span>
+
+        <span
+          class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+        </span>
+
+      </nav>
+      <% else %>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          <span
+            class="me-3 py-2 text-dark text-decoration-none"><%= link_to 'Войти', new_user_session_path %>
+          </span>
+
+          <span
+            class="me-3 py-2 text-dark text-decoration-none"><%= link_to 'Зарегистрироваться', new_user_registration_path %>
+          </span>
       </nav>
     <% end %>
-    </div>
+  </div>
 
   <div class="container">
+
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+
   </div>
+
   <div class="container">
     <%= yield %>
   </div>
+
   </body>
 </html>
