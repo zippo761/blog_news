@@ -1,6 +1,10 @@
 class DigestMailingJob < ApplicationJob
   queue_as :default
 
+  attr_accessor :subscr_type, :from_date, :till_date
+
+  @subscr_type = 'daily'
+
   def do_mailing(p_user, p_posts)
     @subscr_type = 'daily'
     @till_date = Time.parse("07:00") - 1  # сегодня
@@ -10,6 +14,7 @@ class DigestMailingJob < ApplicationJob
   end
 
   def perform
+    @subscr_type = 'daily'
 
     @users_for_email = User.where(subscription_type: @subscr_type)
 
