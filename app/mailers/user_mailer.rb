@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
   layout 'user_mailer'
 
   def welcome_email
-    @user = params[:user]
+    @user = params[:user_id]
 
     mail(
       to: @user.email,
@@ -14,8 +14,7 @@ class UserMailer < ApplicationMailer
 
   def daily_digest_email
     @user = params[:user]
-
-
+    @posts = params[:post]
     mail(
       to: @user.email,
       # from: 'from@example.com',

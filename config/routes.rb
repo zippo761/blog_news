@@ -1,4 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
+  authenticate :user, -> (u) { u.id == 1 } do
+    mount Sidekiq::Web.new, at: '/jobs'
+  end
+
   root 'posts#index'
 
   devise_for :users, controllers: {registrations: 'users/registrations'}

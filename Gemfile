@@ -28,7 +28,7 @@ gem 'rails-i18n'
 
 # Background Job
 gem 'sidekiq', '~> 6.5', '>= 6.5.1'
-
+gem 'whenever', require: false
 # gem Devise
 gem 'devise'
 # Use Redis adapter to run Action Cable in production

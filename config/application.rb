@@ -13,9 +13,9 @@ module TestBlog
 
     config.i18n.default_locale = :ru
     config.i18n.locale = :ru
-
+    config.time_zone = 'Moscow'
     # user sidekiq
-    #config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :sidekiq
     #
     # Configuration for the application, engines, and railties goes here.
     #
