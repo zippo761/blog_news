@@ -27,7 +27,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 
 # Background Job
-gem 'sidekiq', '~> 6.5', '>= 6.5.1'
+gem 'sidekiq'
 gem 'whenever', require: false
 # gem Devise
 gem 'devise'

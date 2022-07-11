@@ -8,33 +8,29 @@ class UserMailer < ApplicationMailer
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Добро пожаловать Blog-Digest.test!',
+      subject: 'Добро пожаловать Kit-Blog!',
       )
   end
 
   def daily_digest_email
     @user = params[:user]
-    @posts = params[:post]
+    @posts = params[:posts]
 
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Ежедневная рассылка Blog-Digest.test',
+      subject: 'Ежедневная рассылка Kit-Blog',
       )
   end
 
   def weekly_digest_email
     @user = params[:user]
-
-    @till_date = Time.parse("07:00") - 1  # сегодня
-    @from_date = @till_date - 1.week + 1
-
-    @posts = Post.where(created_at: @from_date..@till_date)
+    @posts = params[:posts]
 
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Еженедельная рассылка Blog-Digest.test',
+      subject: 'Еженедельная рассылка Kit-Blog',
       )
   end
 end

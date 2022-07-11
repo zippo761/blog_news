@@ -4,7 +4,8 @@
 # http://en.wikipedia.org/wiki/Cron
 
 # Example:
-set :output, "log/cron.log"
+env :PATH, ENV['PATH']
+set :output, 'log/cron.log'
 # set :output, "/path/to/my/cron_log.log"
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -18,6 +19,10 @@ set :output, "log/cron.log"
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.minute do
-  runner "DigestMailingJob.perform_later"
+every 1.day, at: '7:00 am' do
+  rake 'weekly_email:run'
+end
+
+every 1.week, on: :monday, at: '07:00' do
+  rake 'daily:run'
 end
