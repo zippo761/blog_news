@@ -1,11 +1,14 @@
 <%= render @post %>
 
-
-<%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-warning" %> |
-<%= link_to "Назад ко всем постам", posts_path, :class => "btn btn-success" %>
+<% if can? :update, @post %>
+  <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-warning" %>
+<% end %>
 <hr>
-<%= button_to "Удалить пост", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
+<% if can? :destroy, @post %>
+  <%= button_to "Удалить пост", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
+<% end  %>
 
+<%= link_to "Назад ко всем постам", posts_path, :class => "btn btn-success" %>
 <hr>
 
 <div class="row">

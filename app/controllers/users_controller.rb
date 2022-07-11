@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:destroy, :show_grants, :set_grants]
-
 
   # GET /users
   # GET /users.json

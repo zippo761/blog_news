@@ -29,8 +29,13 @@ gem 'rails-i18n'
 # Background Job
 gem 'sidekiq'
 gem 'whenever', require: false
+
 # gem Devise
 gem 'devise'
+
+# gem for Auth admin
+gem 'cancancan'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
