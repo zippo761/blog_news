@@ -6,7 +6,6 @@ class DailyDigestMailingJobTest < ActiveJob::TestCase
   # end
 end
 
-
 class WeeklyDigestMailingJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true

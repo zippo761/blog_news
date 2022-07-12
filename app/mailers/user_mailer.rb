@@ -8,8 +8,8 @@ class UserMailer < ApplicationMailer
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Добро пожаловать Kit-Blog!',
-      )
+      subject: 'Добро пожаловать Kit-Blog!'
+    )
   end
 
   def daily_digest_email
@@ -18,8 +18,8 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: 'Ежедневная рассылка Kit-Blog',
-      )
+      subject: 'Ежедневная рассылка Kit-Blog'
+    )
   end
 
   def weekly_digest_email
@@ -29,7 +29,7 @@ class UserMailer < ApplicationMailer
     mail(
       to: @user.email,
       # from: 'from@example.com',
-      subject: 'Еженедельная рассылка Kit-Blog',
-      )
+      subject: 'Еженедельная рассылка Kit-Blog'
+    )
   end
 end

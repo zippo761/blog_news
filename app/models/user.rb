@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  enum subscription_type: [:no, :daily, :weekly]
+  enum subscription_type: %i[no daily weekly]
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -19,5 +19,4 @@ class User < ApplicationRecord
   def init
     self.subscription_type ||= :weekly
   end
-
 end

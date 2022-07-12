@@ -4,11 +4,9 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.with(user: User.first).welcome_email
   end
 
-
   def daily_digest_email
     UserMailer.with(user: User.first).daily_digest_email
   end
-
 
   def weekly_digest_email
     UserMailer.with(user: User.first).weekly_digest_email

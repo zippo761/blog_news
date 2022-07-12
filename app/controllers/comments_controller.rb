@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: [:update, :destroy]
-  #before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: %i[update destroy]
 
   include CommentsHelper
 
@@ -41,7 +40,6 @@ class CommentsController < ApplicationController
         render 'edit'
       end
     end
-
   end
 
   private def comment_params
@@ -54,10 +52,8 @@ class CommentsController < ApplicationController
 
   def check_owner
     unless is_owner(@comment)
-      flash[:alert] = "Запрещено редактировать чужой контент"
-      redirect_to  posts_path
+      flash[:alert] = 'Запрещено редактировать чужой контент'
+      redirect_to posts_path
     end
   end
-
-
 end

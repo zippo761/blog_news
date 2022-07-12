@@ -26,7 +26,6 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
-
   # add to fix error: NoMethodError in Devise::RegistrationsController#create
   # undefined method `user_url' for #<Devise::RegistrationsController:0x0000000000dd90>
   config.navigational_formats = ['*/*', :html, :turbo_stream]

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:destroy, :show_grants, :set_grants]
+  before_action :set_user, only: %i[destroy show_grants set_grants]
 
   # GET /users
   # GET /users.json
@@ -19,9 +19,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/show_grants
-  def show_grants
-
-  end
+  def show_grants; end
 
   # PATCH /users/1/set_grants
   def set_grants
@@ -37,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
