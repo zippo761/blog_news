@@ -65,6 +65,8 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'rubocop', require: false
   gem 'sqlite3', '~> 1.4'
+  # for test
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -72,7 +74,8 @@ group :development do
   gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
+  # for test
+  gem 'rspec-rails'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
@@ -81,6 +84,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  # for test
+  gem 'rspec-rails'
 end
 
 group :production do

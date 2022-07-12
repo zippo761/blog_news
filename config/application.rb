@@ -24,5 +24,17 @@ module TestBlog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    # Generate system test file
+    config.generators.system_tests = nil
+    config.generators do |g|
+      g.test_framework(
+        :rspec,
+        fixtures: false,
+        view_specs: false,
+        helpers_specs: false,
+        routing_specs: false
+      )
+    end
   end
 end
