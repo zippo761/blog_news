@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  authenticate :user, -> (u) { u.id == 1 } do
+  authenticate :user, -> (u) { u.is_admin? } do
     mount Sidekiq::Web.new, at: '/jobs'
   end
 

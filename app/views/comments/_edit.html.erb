@@ -1,0 +1,12 @@
+<div class="panel-body">
+  <%= form_with model: [@post, @comment] do |form| %>
+
+    <div class="field form-group">
+      <%= form.text_area :content, :rows => 3, :class => 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Сохранить", :class => 'btn btn-success pull-right' %>
+    </div>
+  <% end # loop %>
+</div>
+

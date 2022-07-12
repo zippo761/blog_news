@@ -16,13 +16,12 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control'%>
       </div>
 
-
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Ждем подтверждения для: <%= resource.unconfirmed_email %></div>
       <% end %>
 
       <div class="field form-group">
-        <%= f.label :subscription_type, 'Тип Рассылки', :class => 'control-label' %>
+        <%= f.label :subscription_type, :class => 'control-label' %>
         <%= f.select :subscription_type,
                      User.subscription_types.keys.map{ |key| [map_subscription_name(key), key] },
                      {},
@@ -47,15 +46,15 @@
         <%= f.label :current_password, :class => 'control-label' %> <i>(введите текущий пароль для подтверждения)</i>
         <%= f.password_field :current_password, autocomplete: "current-password", :class => 'form-control' %>
       </div>
-        <br>
+
       <div class="actions">
         <%= f.submit "Обновить", :class => 'btn btn-success'%>
-      </div>
-      <br>
-      <div class="actions">
-        <%= button_to "Удалить мой аккаунт", registration_path(resource_name), data: { confirm: "Подтвердите удаление аккаунта!" }, method: :delete, :class => 'btn btn-danger' %>
       </div>
     <% end %>
   </div>
 </div>
-
+<div>
+  <div class="col-sm-2 col-sm-offset-6 col-md-2 col-md-offset-4">
+    <%= button_to "Удалить мой аккаунт", registration_path(resource_name), data: { confirm: "Подтвердите удаление аккаунта!" }, method: :delete, :class => 'btn btn-warning' %>
+  </div>
+</div>

@@ -13,7 +13,7 @@
       <div class="field form-group">
         <%= f.label :password, :class => 'control-label' %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> символов минимум)</em>
+          <em>(<%= @minimum_password_length %> символов минимум)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
       </div>
@@ -22,7 +22,7 @@
         <%= f.label :password_confirmation, :class => 'control-label' %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
       </div>
-
+      <br>
       <div class="actions">
         <%= f.submit "Зарегистрироваться", :class => 'btn btn-success' %>
       </div>

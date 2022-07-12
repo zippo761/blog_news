@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
   #before_action :check_owner, only: [:edit, :update, :destroy]
 
   include CommentsHelper
+
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:post_id])
+  end
 
   def create
     @post = Post.find(params[:post_id])
@@ -25,6 +30,16 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to request.referrer, notice: 'Комментарий удален' }
       format.json { head :no_content }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to post_path, notice: 'Комментарий обновлен' }
+      else
+        render 'edit'
+      end
     end
 
   end

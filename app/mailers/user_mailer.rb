@@ -18,7 +18,6 @@ class UserMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      # from: 'from@example.com',
       subject: 'Ежедневная рассылка Kit-Blog',
       )
   end
