@@ -2,9 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i[ show edit update destroy ]
   # before_action :check_access, only: [:edit, :update, :destroy]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  # before_action :check_owner, only: [:edit, :update, :destroy]
 
-  # load_and_authorize_resource
+  #load_and_authorize_resource
 
 
   include PostsHelper
@@ -62,6 +62,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
+    #authorize! :destroy, @post
     respond_to do |format|
       format.html { redirect_to posts_path, notice: 'Пост удалён' }
       format.json { head :no_content }
@@ -79,10 +80,10 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content)
     end
 
-def check_owner
-  unless is_owner(@post)
-    flash[:alert] = "Запрещено редактировать чужой контент"
-    redirect_to  posts_path
+  def check_owner
+    unless is_owner(@post)
+      flash[:alert] = "Запрещено редактировать чужой контент"
+      redirect_to  posts_path
+    end
   end
-end
 end

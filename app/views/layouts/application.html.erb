@@ -19,7 +19,7 @@
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
 
         <span
-          class="me-3 py-2 text-dark text-decoration-none">Здравствуйте, <%= link_to current_user.email, edit_user_registration_path %>
+          class="me-3 py-2 text-dark text-decoration-none">Текущий пользователь: <%= link_to current_user.email, edit_user_registration_path %>
         </span>
 
         <span
@@ -46,13 +46,11 @@
           </span>
       </nav>
     <% end %>
-    <% if user_signed_in? %>
-      <%if current_user.is_admin?%>
+      <% if can? :read, @users%>
         <span
           class="me-3 py-2 text-dark text-decoration-none"><%= link_to "Пользователи", users_path %>
         </span>
       <% end %>
-    <% end %>
   </div>
 
   <div class="container">
