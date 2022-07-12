@@ -9,10 +9,31 @@
 # Create an Admin user
 #
 User.create!(
-    email: 'admin@test.com',
+    email: 'admin_1@test.com',
     password: 'password123',
     password_confirmation: 'password123',
     is_admin: true
     )
+User.create!(
+  email: 'admin_2@test.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  is_admin: true
+)
+
+User.create!(
+  email: 'admin_3@test.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  is_admin: true
+)
+
+User.create!(
+  email: 'admin_4@test.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  is_admin: true
+)
+
 
 
