@@ -5,12 +5,15 @@
       <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
     </div>
 
-        <%= link_to 'Редактировать комментарий', edit_post_comment_path(@post, @comments), :class => 'btn btn-success' %>
+        <% if can? :update, @comment %>
+            <%= link_to 'Редактировать комментарий', edit_post_comment_path(@post, @comments), :class => 'btn btn-success' %>
+        <% end %>
 
-        <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
+        <% if can? :destroy, @comment %>
+            <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
                        :method => :delete,
                        data: {confirm: 'Are you sure?'},
                        :class => 'btn btn-danger' %>
-
+        <% end %>
   <% end %>
 <% end %>

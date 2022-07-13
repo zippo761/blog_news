@@ -66,6 +66,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'sqlite3', '~> 1.4'
   # for test
+  gem 'factory_bot'
   gem 'rspec-rails'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 end

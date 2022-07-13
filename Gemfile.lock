@@ -103,6 +103,8 @@ GEM
     diff-lcs (1.5.0)
     digest (3.1.0)
     erubi (1.10.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hpricot (0.8.6)
@@ -290,6 +292,7 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  factory_bot
   html2slim
   importmap-rails
   jbuilder
