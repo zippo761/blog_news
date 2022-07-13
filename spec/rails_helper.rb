@@ -62,3 +62,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# Really open required page with capybara
+Capybara.default_driver = :selenium_chrome
