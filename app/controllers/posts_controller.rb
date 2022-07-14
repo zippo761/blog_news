@@ -2,8 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update destroy new]
   before_action :set_post, only: %i[show edit update destroy]
 
-  #load_and_authorize_resource
-
   include PostsHelper
 
   # GET /posts or /posts.json
@@ -76,10 +74,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content)
   end
 
-  def check_owner
-    unless is_owner(@post)
-      flash[:alert] = 'Запрещено редактировать чужой контент'
-      redirect_to posts_path
-    end
-  end
 end

@@ -66,11 +66,11 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'sqlite3', '~> 1.4'
   # for test
-  gem 'rake'
   gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'factory_bot'
+  gem 'rake'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 end
 
@@ -90,7 +90,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-
 end
 
 group :production do

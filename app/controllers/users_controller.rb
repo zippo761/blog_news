@@ -18,9 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/show_grants
-  def show_grants; end
-
   # PATCH /users/1/set_grants
   def set_grants
     respond_to do |format|
@@ -41,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user)
+    params.require(:user).permit(:email, :password)
   end
 end
