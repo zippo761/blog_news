@@ -66,6 +66,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'sqlite3', '~> 1.4'
   # for test
+  gem 'rake'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'factory_bot'
