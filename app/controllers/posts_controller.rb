@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[edit update destroy new]
   before_action :set_post, only: %i[show edit update destroy]
 
-  # load_and_authorize_resource
+  #load_and_authorize_resource
 
   include PostsHelper
 
@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @comments = @post.comments.all
-    # authorize! :read, @post
   end
 
   # GET /posts/new
