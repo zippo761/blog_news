@@ -13,14 +13,16 @@ RSpec.describe "Update post", type: :feature do
     click_on 'Сохранить'
   end
 
-  scenario "Should have eq update post" do
-    click_on "Редактировать"
-    expect(page).to have_content('Редактирование поста')
+  scenario "Should expect link destroy post" do
+    expect(page).to have_content('Удалить пост')
   end
 
-  scenario "Should have current path edit post" do
-    click_on "Редактировать"
-    expect(current_path).to eq('/posts/1/edit')
+  scenario "Should expect destroy post" do
+    page.accept_confirm do
+      click_on "Удалить пост", match: :first
+    end
+    expect(page).to have_content('Пост удалён')
   end
+
 end
 
