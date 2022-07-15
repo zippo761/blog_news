@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Update post', type: :feature do
   before(:each) do
     visit posts_path
-    click_on 'Логин'
+    click_on 'Авторизация'
     fill_in 'user_email', with: 'admin_1@test.com'
     fill_in 'user_password', with: 'password123'
     click_on('Войти')
@@ -17,7 +17,7 @@ RSpec.describe 'Update post', type: :feature do
     expect(page).to have_content('Удалить пост')
   end
 
-  xit 'Should expect destroy post' do
+  scenario 'Should expect destroy post' do
     page.accept_confirm do
       click_on 'Удалить пост', match: :first
     end

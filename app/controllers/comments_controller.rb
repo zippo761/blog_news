@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
   end
 
   def create
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to post_path, notice: 'Комментарий обновлен' }
+        format.html { redirect_to post_comments_path(@comment), notice: 'Комментарий обновлен' }
       else
         render 'edit'
       end
@@ -50,10 +50,4 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def check_owner
-    unless is_owner(@comment)
-      flash[:alert] = 'Запрещено редактировать чужой контент'
-      redirect_to posts_path
-    end
-  end
 end

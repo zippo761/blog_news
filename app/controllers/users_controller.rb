@@ -3,13 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[destroy show_grants set_grants]
 
   # GET /users
-  # GET /users.json
   def index
     @users = User.all
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|

@@ -4,16 +4,18 @@
     <div class="alert alert-light">
       <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
     </div>
-
-        <% if can? :update, @comment %>
-            <%= link_to 'Редактировать комментарий', edit_post_comment_path(@post, @comments), :class => 'btn btn-success' %>
-        <% end %>
-
-        <% if can? :destroy, @comment %>
-            <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
-                       :method => :delete,
-                       data: {confirm: 'Are you sure?'},
-                       :class => 'btn btn-danger' %>
-        <% end %>
+        <div class="things-in-a-line  col-lg-10">
+            <% if can? :update, comments %>
+                <%= link_to 'Редактировать комментарий', edit_post_comment_path(@post, comments), :class => 'btn btn-success' %>
+            <% end %>
+            <br>
+            <br>
+            <% if can? :destroy, comments %>
+                <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
+                           :method => :delete,
+                           data: {confirm: 'Are you sure?'},
+                           :class => 'btn btn-danger' %>
+            <% end %>
+        </div>
   <% end %>
 <% end %>

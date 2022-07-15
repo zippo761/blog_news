@@ -13,6 +13,11 @@ class Ability
     can :destroy, Post, user: user
     can :update, Post, user: user
     can :create, Post
+
+    can [ :update, :destroy], Comment do |comment|
+      comment.try(:user) == user
+    end
+
     can :create, Comment
 
     # user ||= User.new

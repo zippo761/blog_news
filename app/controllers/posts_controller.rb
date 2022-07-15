@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update destroy new]
   before_action :set_post, only: %i[show edit update destroy]
 
-  include PostsHelper
 
   # GET /posts or /posts.json
   def index

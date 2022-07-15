@@ -2,5 +2,7 @@
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Назад', posts_path, :class => "btn btn-primary" %>
+<div class="col-sm-2 col-md-1">
+  <%= link_to "Назад", :back, :class => 'btn btn-primary pull-left' %>
+</div>
 

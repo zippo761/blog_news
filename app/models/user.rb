@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates :email, presence: true, length: { in: 7..20 }
+
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   after_create :send_welcome_email

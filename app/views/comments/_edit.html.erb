@@ -4,8 +4,15 @@
     <div class="field form-group">
       <%= form.text_area :content, :rows => 3, :class => 'form-control' %>
     </div>
-    <div class="actions">
-      <%= form.submit "Сохранить", :class => 'btn btn-success pull-right' %>
+    <br>
+    <div class="things-in-a-line">
+        <div class="actions">
+          <%= form.submit "Сохранить", :class => 'btn btn-success pull-right' %>
+        </div>
+        <br>
+        <div class="col-sm-2 col-md-1">
+          <%= link_to "Назад", post_path(@post), :class => 'btn btn-primary pull-left' %>
+        </div>
     </div>
   <% end # loop %>
 </div>

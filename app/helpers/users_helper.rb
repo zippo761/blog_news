@@ -1,5 +1,6 @@
 module UsersHelper
-  # TODO: костыль, но пока так
+
+  # TODO: пока так
   def map_subscription_name(key)
     name_map = {
       'no' => 'Отключена',
@@ -9,4 +10,5 @@ module UsersHelper
 
     name_map[key]
   end
+
 end

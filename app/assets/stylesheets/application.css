@@ -2,3 +2,9 @@
  *= require_tree .
  *= require_self
  */
+.things-in-a-line{
+    display: flex;
+    flex-direction: row; /* this is actually the default, but I put it here for clarity reasons */
+}
+
+.modal-footer button { margin-left:1px; }
