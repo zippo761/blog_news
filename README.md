@@ -23,7 +23,7 @@ Install gems
 Start server
 
 
-EmailJob(welcome, daily, weekly) work only in test environment.
+CronJob(welcome, daily, weekly) work only in test.
 
 Sidekiq url /jobs, only for admin. 
 
