@@ -14,7 +14,6 @@ Install gem without pg
 Install gems
 
 4) rake db:seed RAILS_ENV=test
-
 For start tests.
 
 5) rails s
