@@ -8,7 +8,7 @@ Prepare for start:
 It create admin account. Email: admin_1@test.com, password: password123
 
 2) bundle config set --local without production 
-Install gem without pg
+Install gems without pg
 
 3) bundle install
 Install gems
