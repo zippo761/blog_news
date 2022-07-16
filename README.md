@@ -5,7 +5,7 @@ Ruby 3.1.2
 Prepare for start:
 
 1) bin/rails db:seed
-It create admin account. Email: admin_1@test.com, password: password123
+It create admin account. Email: "admin_1@test.com", password: password123
 
 2) bundle config set --local without production 
 Install gem without pg
