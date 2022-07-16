@@ -18,3 +18,6 @@ For start tests right
 
 5) rails s
 Start server
+
+
+Blog don't finish yet.
