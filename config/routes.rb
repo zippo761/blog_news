@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :users
-
   resources :users do
     member do
       get :show_grants

@@ -3,25 +3,23 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
 
-  # GET /posts or /posts.json
   def index
     @posts = Post.all.order(created_at: :desc)
   end
 
-  # GET /posts/1 or /posts/1.json
   def show
     @comments = @post.comments.all
   end
 
-  # GET /posts/new
+
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
+
   def edit; end
 
-  # POST /posts or /posts.json
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -38,7 +36,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
+
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -51,7 +49,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
+
   def destroy
     @post.destroy
     # authorize! :destroy, @post

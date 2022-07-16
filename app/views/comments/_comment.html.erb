@@ -1,21 +1,20 @@
-<% if @comments.any? %>
-  <h3>Все комментарии</h3>
+<% if @post.comments.any? %>
+  <h3>Комментарии</h3>
   <% @post.comments.each do |comments| %>
     <div class="alert alert-light">
-      <p><strong><%=comments.username  %></strong>: <%= comments.content %></p>
+      <% owner = '(Автор поста)' %>
+      <p><strong><%=comments.user.name  %></strong>: <%= comments.content %>: <%= owner if @post.user_id == comments.user_id %></p>
     </div>
-        <div class="things-in-a-line  col-lg-10">
+        <div class="things-in-a-line  col-lg-5">
             <% if can? :update, comments %>
                 <%= link_to 'Редактировать комментарий', edit_post_comment_path(@post, comments), :class => 'btn btn-success' %>
             <% end %>
             <br>
             <br>
             <% if can? :destroy, comments %>
-                <%= button_to 'Удалить комментарий', post_comment_path(@post, comments),
-                           :method => :delete,
-                           data: {confirm: 'Are you sure?'},
-                           :class => 'btn btn-danger' %>
+                <%= button_to 'Удалить комментарий', post_comment_path(@post, comments), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
             <% end %>
         </div>
   <% end %>
 <% end %>
+

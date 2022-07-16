@@ -1,8 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[update destroy]
-  #load_and_authorize_resource
-  include CommentsHelper
 
   def edit
     @post = Post.find(params[:post_id])
@@ -17,6 +15,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to post_comments_url(@comment), notice: 'Комментарий создан' }
         format.json { head :no_content }
+      else
+        format.html { redirect_to post_path(@post), notice: 'Комментарий не может быть пустым или содержать больше 200 символов' }
       end
     end
   end
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   end
 
   private def comment_params
-    params.require(:comment).permit(:username, :content)
+    params.require(:comment).permit(:content)
   end
 
   def set_comment

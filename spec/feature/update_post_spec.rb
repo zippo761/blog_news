@@ -4,7 +4,7 @@ RSpec.describe 'Update post', type: :feature do
   before(:each) do
     visit posts_path
     click_on 'Авторизация'
-    fill_in 'user_email', with: 'admin_1@test.com'
+    fill_in 'user_email', with: 'admin@test.com'
     fill_in 'user_password', with: 'password123'
     click_on('Войти')
     click_on('Добавить пост')

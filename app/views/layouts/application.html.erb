@@ -21,7 +21,7 @@
 
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
           <span
-            class="me-3 py-2 text-dark text-decoration-none">Текущий пользователь: <%= link_to current_user.email, edit_user_registration_path %>
+            class="me-3 py-2 text-dark text-decoration-none">Текущий пользователь: <%= link_to current_user.name, edit_user_registration_path %>
           </span>
 
           <span
@@ -62,10 +62,10 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
-    </div>
 
-    <div class="container">
       <%= yield %>
+
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
