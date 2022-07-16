@@ -13,8 +13,7 @@ Install gem without pg
 3) bundle install
 Install gems
 
-4) rake db:seed RAILS_ENV=test
-For start tests.
+4) rake db:seed RAILS_ENV=test For start tests.
 
 5) rails s
 Start server
