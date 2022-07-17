@@ -1,5 +1,4 @@
 <% if @posts.any? %>
-  <h1>Посты</h1>
   <% @posts.each do |post| %>
     <div class="alert alert-light">
       <h3><%= link_to post.title, post_path(post) %></h3>
