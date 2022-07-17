@@ -1,8 +1,4 @@
 ru:
-  will_paginate:
-    previous_label: "&#8592; Пред."
-    next_label: "След. &#8594;"
-    page_gap: "&hellip;"
   devise:
     errors:
       messages:
@@ -11,39 +7,24 @@ ru:
           other: "%{count} errors prohibited this %{resource} from being saved:"
   activerecord:
     models:
-      blog_post: 'Статья'
+      post: 'Статья'
       user: 'Пользователь'
-      role: 'Группа доступа'
-      action: 'Действие в приложении'
-      role_right: 'Разрешение для группы доступа'
-      post_comment: 'Комментарий'
+      comment: 'Комментарий'
     attributes:
-      blog_post:
+      post:
         title: 'Название'
         content: 'Содержимое'
-        publish_date: 'Дата публикации'
         created_at: 'Создано'
         updated_at: 'Обновлено'
-        user_id: 'Автор'
       user:
         email: 'E-mail'
-        role_id: 'Группа доступа'
         created_at: 'Дата создания'
         updated_at: 'Дата обновления'
         subscription_type: 'Тип подписки'
         name: 'Имя'
-      role:
-        name: "Наименование роли"
-        code: "Код"
-      action:
-        controller_name: "Контролллер"
-        action_name: "Метод"
-      role_right:
-        role_id: "Группа доступа"
-        action_id: "Действие"
-      post_comment:
+      comment:
         user_id: 'Автор'
-        blog_post_id: 'Статья'
+        post_id: 'Статья'
         content: 'Содержимое'
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'
