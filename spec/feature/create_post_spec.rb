@@ -32,8 +32,11 @@ RSpec.describe 'Sign in', type: :feature do
   scenario 'invalid inputs' do
     click_on('Добавить пост')
     fill_in 'post_title', with: ' '
-    fill_in 'post_content', with: 'Текст для первого поста'
+    fill_in 'post_content', with: ' '
     click_on 'Сохранить'
-    expect(page).to have_content('Title не может быть пустым')
+    expect(page).to have_content('Название не может быть пустым')
+    expect(page).to have_content('Название недостаточной длины (не может быть меньше 5 символов)')
+    expect(page).to have_content('Содержимое не может быть пустым')
+    expect(page).to have_content('Содержимое недостаточной длины (не может быть меньше 5 символов)')
   end
 end
