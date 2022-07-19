@@ -1,0 +1,6 @@
+h2
+  | Редактирование поста
+= render 'posts/form', post: @post
+.row
+  .col-sm-10.col-sm-offset-1.col-md-5.col-md-offset-1
+    = link_to 'Отмена', @post, :class => "btn btn-primary"

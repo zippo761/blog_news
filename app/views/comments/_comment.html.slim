@@ -1,0 +1,17 @@
+- if @post.comments.any?
+  h3
+    | Комментарии
+  - @post.comments.each do |comment|
+    .alert.alert-light
+      - owner = '(Автор поста)'
+    p
+    strong
+      =comment.user.name
+    | : 
+    = comment.content
+    | : 
+    = owner if @post.user_id == comment.user_id
+    - if can? :update, comment
+      = link_to 'Редактировать комментарий', edit_post_comment_path(@post, comment), :class => 'btn btn-success'
+    - if can? :destroy, comment
+      = button_to 'Удалить комментарий', post_comment_path(@post, comment), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'

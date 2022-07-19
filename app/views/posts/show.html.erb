@@ -2,10 +2,9 @@
 <div class="things-in-a-line">
 
   <% if can? :update, @post %>
-    <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-warning" %>
+    <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-outline-" %>
   <% end %>
 
-  <hr>
 
   <% if can? :destroy, @post %>
     <%= button_to "Удалить пост", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>

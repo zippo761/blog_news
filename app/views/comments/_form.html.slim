@@ -1,0 +1,8 @@
+- if user_signed_in?
+  h3
+    |  Добавление комментария 
+  = form_for([@post, @post.comments.build]) do |f|
+    .col-sm-50.col-sm-offset-1.col-md-50.col-md-offset-1
+      = f.text_area :content, :cols => "10", :rows => "5", :class => 'form-control'
+    p
+      = f.submit "Добавить комментарий", :class => 'btn btn-success'

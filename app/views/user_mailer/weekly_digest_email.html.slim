@@ -1,0 +1,15 @@
+h1
+  | Самое интересное за неделю от Blog-Digest.test!
+- @posts.each do |post|
+  div
+    = link_to post.title, post
+    = link_to 'Читать...', post, :class => 'text_success'
+br
+p
+  | Хорошего дня!
+br
+i
+  | С уважением, команда Blog-Digest.test
+hr
+p
+  |  Отписаться | На сайт 
