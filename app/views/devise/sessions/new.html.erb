@@ -5,13 +5,13 @@
       <div class="form-floating">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control', :id => "floatingInput",
                           :placeholder => "name@example.com" %>
-        <label for="floatingInput">Email address</label>
+        <label for="floatingInput">Почта</label>
       </div>
       <div class="form-floating">
         <%= f.password_field :password, autocomplete: "current-password", :class => 'form-control',
                              :id => "floatingPassword",
                              :placeholder => "Password" %>
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword">Пароль</label>
       </div>
       <%= f.submit "Войти", :class => 'w-100 btn  btn-dark' %>
     <% end %>
