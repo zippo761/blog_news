@@ -1,15 +1,13 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[update destroy]
-
+  before_action :set_post, only: %i[edit create destroy update]
 
   def edit
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
   end
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
 
     respond_to do |format|
@@ -17,13 +15,12 @@ class CommentsController < ApplicationController
         format.html { redirect_to request.referrer, notice: 'Комментарий создан' }
         format.json { head :no_content }
       else
-        format.html { redirect_to post_path(@post), notice: 'Комментарий не может быть пустым или содержать больше 200 символов' }
+        format.html { redirect_to post_path(@post), notice: 'Комментарий не может быть пустым или содержать больше 500 символов' }
       end
     end
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
 
@@ -38,7 +35,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to request.referrer, notice: 'Комментарий обновлен' }
       else
-        render 'edit'
+        format.html { redirect_to request.referrer, notice: 'Текст комментарий не может быть пустым или содержать больше 500 символов' }
       end
     end
   end
@@ -49,6 +46,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 
 end

@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         # UserMailer.with(user: @user).welcome_email.deliver_later
-        format.html { redirect_to post_url(@post), notice: 'Создан новый пост' }
+        format.html { redirect_to post_url(@post), notice: 'Создана новая публикация' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: 'Пост был обновлён' }
+        format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     @post.destroy
     # authorize! :destroy, @post
     respond_to do |format|
-      format.html { redirect_to posts_path, notice: 'Пост удалён' }
+      format.html { redirect_to posts_path, notice: 'Публикация была удалена' }
       format.json { head :no_content }
     end
   end
