@@ -1,0 +1,19 @@
+= form_with model: @post do |form|
+  - if @post.errors.any?
+    #error_explanation
+      ul
+        - @post.errors.full_messages.each do |msg|
+          .alert.alert-danger
+            = msg
+  p
+    = form.label :title, 'Название', :class => 'control-label'
+  p
+    = form.text_area :title, :class => 'form-control'
+  p
+    = form.label :content, 'Текст', :class => 'control-label'
+  p
+    = form.text_area :content, :class => 'form-control'
+  .actions
+
+  p
+    = form.submit "Сохранить", :class => 'btn btn-success'
