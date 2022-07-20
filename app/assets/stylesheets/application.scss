@@ -16,37 +16,3 @@ a:not([class]):hover {
   text-decoration: underline;
 }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
-.top-cover {
-  width: 100px;
-  height: 100px;
-  background-color: black;
-  margin-top: 15px;
-}
-
-.top-name {
-  display: block;
-  width: 100px;
-  max-height: 40px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.top-cover,
-.top-name {
-  margin-left: auto;
-  margin-right: auto;
-}

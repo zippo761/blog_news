@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
@@ -14,7 +13,7 @@
 
   <body>
 
-  <header class="p-2 mb-3 border-bottom bg-light">
+  <header class="p-2 mb-2 border-bottom bg-light">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a class="navbar-brand" href="/">
@@ -22,6 +21,9 @@
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <%= link_to "Главная страница", posts_path , class: 'nav-link px-2 link-dark'%>
+          <% if user_signed_in? %>
+            <%= link_to "Добавить публикацию", new_post_path, class: 'nav-link px-2 link-dark'%>
+          <% end %>
         </ul>
         <% if user_signed_in? %>
           <div class="dropdown text-end">
@@ -29,7 +31,6 @@
               <img src="https://github.com/mdo.png" alt="mdo" width="40" height="37" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><%= link_to "Добавить публикацию", new_post_path, class: 'dropdown-item'%></li>
               <li><%= link_to 'Редактирование профиля', edit_user_registration_path, class: 'dropdown-item' %></li>
               <% if current_user.is_admin? %>
                 <li><%= link_to 'Список пользователей', users_path, class: 'dropdown-item' %></li>

@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[update destroy]
 
+
   def edit
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_comments_url(@comment), notice: 'Комментарий создан' }
+        format.html { redirect_to request.referrer, notice: 'Комментарий создан' }
         format.json { head :no_content }
       else
         format.html { redirect_to post_path(@post), notice: 'Комментарий не может быть пустым или содержать больше 200 символов' }
@@ -35,7 +36,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to post_comments_path(@comment), notice: 'Комментарий обновлен' }
+        format.html { redirect_to request.referrer, notice: 'Комментарий обновлен' }
       else
         render 'edit'
       end

@@ -1,35 +1,35 @@
-<%= render @post %>
-<div class="things-in-a-line">
+<div class="row g-5 justify-content-center">
+  <div class="col-md-10">
 
-  <% if can? :update, @post %>
-    <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-outline-" %>
-  <% end %>
+    <h2><%= @post.title%></h2>
+    <p> Дата публикации: <%= @post.created_at.strftime("%d.%m.%Y %H:%M") %><a><br> Автор: <%=@post.user.name%></a></p>
+    <article>
+      <p><%= @post.content %></p>
+    </article>
 
-
-  <% if can? :destroy, @post %>
-    <%= button_to "Удалить пост", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger'%>
-  <% end  %>
-  <br>
-
-  <div class="col-sm-2 col-md-1">
-    <%= link_to "Назад", :back, :class => 'btn btn-primary pull-left' %>
-  </div>
-
-</div>
-<br>
-<br>
-
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1">
-    <div class="comments">
-      <%= render 'comments/comment' %>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <% if can? :update, @post %>
+        <%= link_to "Редактировать", edit_post_path(@post), :class => "btn btn-outline-warning btn-sm" %>
+      <% end %>
+      <% if can? :destroy, @post %>
+        <%= button_to "Удалить", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete ,
+                                                                                                :class => 'btn btn-outline-danger btn-sm'%>
+      <% end  %>
+      <div class="col-sm-2 col-md-1">
+        <%= link_to "Назад", :back, :class => 'btn btn-outline-dark pull-left btn-sm' %>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="comments">
+        <%= render 'comments/comment' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <%= render 'comments/form'%>
+      </div>
     </div>
   </div>
 </div>
 
-
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1">
-    <%= render 'comments/form'%>
-  </div>
-</div>
