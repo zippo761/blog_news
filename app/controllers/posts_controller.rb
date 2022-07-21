@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update destroy new]
   before_action :set_post, only: %i[show edit update destroy]
-
+  before_action :post_count_updated, only: %i[update]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -11,14 +11,11 @@ class PostsController < ApplicationController
     @comments = @post.comments.all
   end
 
-
   def new
     @post = Post.new
   end
 
-
   def edit; end
-
 
   def create
     @post = Post.new(post_params)
@@ -36,17 +33,21 @@ class PostsController < ApplicationController
     end
   end
 
-
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if @post.count_update < 5
+      respond_to do |format|
+        if @post.update(post_params)
+          format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
+          format.json { render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to post_url(@post), alert:  'Количество редакций публикации превысило - 5'
     end
+
   end
 
 
@@ -69,6 +70,12 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def post_count_updated
+    if @post.count_update < 5
+      @post.count_update += 1
+    end
   end
 
 end

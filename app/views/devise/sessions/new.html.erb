@@ -2,6 +2,26 @@
   <div class="col-sm-5 mt-5 mx-auto col-md-3 col-md-offset-5">
     <h2>Авторизация</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h2><%= pluralize(resource.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+          <ul>
+            <% resource.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% resource.errors.full_messages.each do |msg| %>
+              <div class="alert alert-danger"><%= msg %></div>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="form-floating">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control', :id => "floatingInput",
                           :placeholder => "name@example.com" %>

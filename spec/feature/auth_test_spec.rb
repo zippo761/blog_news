@@ -6,8 +6,8 @@ RSpec.describe 'test authorisation', type: :feature do
 
     visit posts_path
     click_on 'Авторизация'
-    fill_in 'user_email', with: 'admin@test.com'
-    fill_in 'user_password', with: 'password123'
+    fill_in 'floatingInput', with: 'admin@test.com'
+    fill_in 'floatingPassword', with: 'password123'
     click_on('Войти')
     expect(page).to have_content('Вход в систему выполнен')
   end
@@ -15,8 +15,8 @@ RSpec.describe 'test authorisation', type: :feature do
   scenario 'should have no access with wrong auth' do
     visit posts_path
     click_on 'Авторизация'
-    fill_in 'user_email', with: 'wrong email'
-    fill_in 'user_password', with: 'wrong password'
+    fill_in 'floatingInput', with: 'wrong email'
+    fill_in 'floatingPassword', with: 'wrong password'
     click_on('Войти')
     expect(page).not_to have_content('Вход в систему выполнен')
   end

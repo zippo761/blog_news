@@ -14,7 +14,7 @@ module TestBlog
     config.i18n.default_locale = :ru
     config.i18n.locale = :ru
     config.time_zone = 'Moscow'
-    #
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

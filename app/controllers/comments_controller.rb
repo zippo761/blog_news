@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to request.referrer, notice: 'Комментарий создан' }
         format.json { head :no_content }
       else
-        format.html { redirect_to post_path(@post), notice: 'Комментарий не может быть пустым или содержать больше 500 символов' }
+        format.html { redirect_to post_path(@post), alert: 'Комментарий не может быть пустым или содержать больше 500 символов' }
       end
     end
   end
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to request.referrer, notice: 'Комментарий обновлен' }
       else
-        format.html { redirect_to request.referrer, notice: 'Текст комментарий не может быть пустым или содержать больше 500 символов' }
+        format.html { redirect_to request.referrer, alert: 'Текст комментарий не может быть пустым или содержать больше 500 символов' }
       end
     end
   end
