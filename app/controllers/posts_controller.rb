@@ -15,11 +15,19 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit; end
+  def edit
+    currently_editing(current_user.id, Time.zone.now) if @post.current_editor.nil?
+  end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
+    if @post.current_editor == current_user.id
+      currently_editing(nil, nil) if updating?
+      currently_editing(nil, nil) if publishing?
+    end
+
 
     respond_to do |format|
       if @post.save
@@ -76,6 +84,12 @@ class PostsController < ApplicationController
     if @post.count_update < 5
       @post.count_update += 1
     end
+  end
+
+  def currently_editing(editor, time)
+    @post.current_editor = editor
+    @post.editing_started_at = time
+    @post.save
   end
 
 end
