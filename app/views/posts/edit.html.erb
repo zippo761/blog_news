@@ -1,7 +1,7 @@
 <h2>Редактирование публикации</h2>
 <% if @post.current_editor != current_user.id %>
   <div class="alert alert-danger">
-    <p>Somebody else is editing this post now</p>
+    <p>Публикация в данный момент редактируется</p>
   </div>
 <% end %>
 <%= render 'posts/form', post: @post %>

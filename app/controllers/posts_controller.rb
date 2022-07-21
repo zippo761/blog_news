@@ -22,13 +22,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
-    if @post.current_editor == current_user.id
-      currently_editing(nil, nil) if updating?
-      currently_editing(nil, nil) if publishing?
-    end
-
-
     respond_to do |format|
       if @post.save
         # UserMailer.with(user: @user).welcome_email.deliver_later
@@ -44,12 +37,17 @@ class PostsController < ApplicationController
   def update
     if @post.count_update < 5
       respond_to do |format|
-        if @post.update(post_params)
-          format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
-          format.json { render :show, status: :ok, location: @post }
+        if @post.current_editor == current_user.id
+          if @post.update(post_params)
+              currently_editing(nil, nil)
+              format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
+              format.json { render :show, status: :ok, location: @post }
+            else
+              format.html { render :edit, status: :unprocessable_entity }
+              format.json { render json: @post.errors, status: :unprocessable_entity }
+          end
         else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+          redirect_to post_url(@post), alert:  'нет'
         end
       end
     else
@@ -77,7 +75,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :lock_version)
   end
 
   def post_count_updated

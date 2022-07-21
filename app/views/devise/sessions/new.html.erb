@@ -13,24 +13,17 @@
           </ul>
         </div>
       <% end %>
-      <% if resource.errors.any? %>
-        <div id="error_explanation">
-          <ul>
-            <% resource.errors.full_messages.each do |msg| %>
-              <div class="alert alert-danger"><%= msg %></div>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <div class="form-floating">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control', :id => "floatingInput",
-                          :placeholder => "name@example.com" %>
+                          :placeholder => "name@example.com",
+                          required: true %>
         <label for="floatingInput">Почта</label><br>
       </div>
       <div class="form-floating">
         <%= f.password_field :password, autocomplete: "current-password", :class => 'form-control',
                              :id => "floatingPassword",
-                             :placeholder => "Password" %>
+                             :placeholder => "Password",
+                             required: true %>
         <label for="floatingPassword">Пароль</label><br>
       </div>
       <%= f.submit "Войти", :class => 'w-100 btn  btn-success' %>
