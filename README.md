@@ -1,5 +1,8 @@
 Link on Heroku => https://radiant-cliffs-02115.herokuapp.com/
 
+This is a news blog where you can register and add news, edit, delete, comment. Administrators can review news and edit it up to 5 times.
+
+
 Requirements :
 Ruby on Rails 7.0.3
 Ruby 3.1.2
