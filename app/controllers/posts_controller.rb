@@ -9,8 +9,10 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.all
-    if @post.current_editor == current_user.id
-      unset_current_editor(nil)
+    if user_signed_in?
+      if @post.current_editor == current_user.id
+        unset_current_editor(nil)
+      end
     end
   end
 
