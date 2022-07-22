@@ -11,7 +11,9 @@ Redis 7.0.2
 # Prepare for start server:
 
 ## Install gems without pg 
+```
 $ bundle config set --local without production 
+```
 ## Install gems 
 ```
 $ bundle install
