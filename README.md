@@ -1,6 +1,6 @@
 Link on Heroku => https://radiant-cliffs-02115.herokuapp.com/
 
-This is a news blog where you can register, add news, edit, delete, comment. Administrators can review news and edit it up to 5 times.
+This is a news blog where you can register, add news, edit, delete, and comment. Administrators can review news and edit it up to 5 times.
 
 
 Requirements :
