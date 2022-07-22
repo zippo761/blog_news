@@ -13,6 +13,9 @@ $ bundle install
 ## Migrate data base
 $ rake db:migrate
 
+## Start redis server
+$ redis-server
+
 ## Create admin account:
 #### first admin: name: 'Администратор 1' Email: admin@test.com, password: password123
 #### second admin: name: 'Администратор 2', Email: admin_2@test.com, password: password123
@@ -23,12 +26,8 @@ $ rake db:seed
 The tests by default use :selenium_chrome driver <br>
 $ rake db:seed RAILS_ENV=test
 
-## Start redis server
-$ redis-server
-
 ## Start server 
 $ rails s
-
 
 # Description:
 ### Welcome, daily, weekly email send only in test.
