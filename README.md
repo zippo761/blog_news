@@ -10,6 +10,7 @@ Redis 7.0.2
 ## Install gems without pg 
 $ bundle config set --local without production 
 ## Install gems 
+```
 $ bundle install
 ```
 
@@ -18,6 +19,7 @@ $ rake db:migrate
 ```
 
 ## Start redis server
+```
 $ redis-server
 ```
 
@@ -25,15 +27,18 @@ $ redis-server
 #### first admin: name: 'Администратор 1' Email: admin@test.com, password: password123
 #### second admin: name: 'Администратор 2', Email: admin_2@test.com, password: password123
 #### third admin: name: 'Администратор 3', Email: admin_3@test.com, password123
+```
 $ rake db:seed
 ```
 
 ## For start tests.
 The tests by default use :selenium_chrome driver <br>
+```
 $ rake db:seed RAILS_ENV=test
 ```
 
 ## Start server 
+```
 $ rails s
 ```
 
@@ -42,6 +47,7 @@ $ rails s
 If u want to see that email was send,  use =>  <em>Sidekiq</em>
 
 1) start <em>Sidekiq</em> to see  when email was send <br>
+```
 $ sidekiq -C config/sidekiq.yaml 
 ```
 
