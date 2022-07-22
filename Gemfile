@@ -5,15 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '~> 7.0.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-#gem 'sprockets-rails'
+# gem 'sprockets-rails'
 
-#gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'bootstrap', '~> 5.1.3'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
-#gem 'sass-rails'
+# gem 'sass-rails'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
@@ -58,7 +58,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Sass to process CSS
-gem "sassc-rails"
+gem 'sassc-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -67,10 +67,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Use sqlite3 as the database for Active Record
-  gem 'rubocop', require: false
-  gem 'sqlite3', '~> 1.4'
   gem 'rake'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -82,10 +82,10 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'webdrivers'
   gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 group :production do

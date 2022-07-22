@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   enum subscription_type: %i[no daily weekly]
-
+  # TODO if user account was destroy then all posts and comments will destroy too.
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -14,11 +14,14 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   after_initialize :init
 
+
   def send_welcome_email
+    # TODO when user register account will send email, dont forget start redis-server
     UserMailer.with(user: self).welcome_email.deliver_later
   end
 
   def init
+    # default subscription type type for email will weekly
     self.subscription_type ||= :weekly
   end
 end

@@ -1,5 +1,4 @@
 module UsersHelper
-
   # TODO: пока так
   def map_subscription_name(key)
     name_map = {
@@ -10,5 +9,4 @@ module UsersHelper
 
     name_map[key]
   end
-
 end

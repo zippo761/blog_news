@@ -4,7 +4,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     can :read, Post
     can :read, Comment
 
@@ -14,7 +13,7 @@ class Ability
     can :update, Post, user: user
     can :create, Post
 
-    can [ :update, :destroy], Comment do |comment|
+    can [:update, :destroy], Comment do |comment|
       comment.try(:user) == user
     end
 

@@ -47,7 +47,6 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -66,7 +65,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  #SO WE CAN DEBUG RAILS 7 BOOTSTRAP
+  # SO WE CAN DEBUG RAILS 7 BOOTSTRAP
   config.sass.inline_source_maps = true
 
   # Raises error for missing translations.

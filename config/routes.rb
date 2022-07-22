@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
+  ## if u want visit sidekiq dashboard, sign_in admin account
   authenticate :user, ->(u) { u.is_admin? } do
     mount Sidekiq::Web.new, at: '/jobs'
   end

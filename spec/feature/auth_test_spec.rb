@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'test authorisation', type: :feature do
-
   scenario 'should have access with auth' do
-
     visit posts_path
     click_on 'Авторизация'
     fill_in 'floatingInput', with: 'admin@test.com'

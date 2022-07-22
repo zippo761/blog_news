@@ -15,7 +15,7 @@ class WeeklyDigestMailingJob < DigestMailingJob
     @posts = Post.where(created_at: @from_date..@till_date)
 
     @users.each do |r|
-      do_mailing(r, @posts) unless @posts.empty? # abstract do_mailing
+      do_mailing(r, @posts) unless @posts.empty?
     end
   end
 end
