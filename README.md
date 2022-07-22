@@ -15,6 +15,7 @@ $ bundle install
 ```
 
 ## Migrate data base
+```
 $ rake db:migrate
 ```
 
