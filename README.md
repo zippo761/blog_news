@@ -1,5 +1,5 @@
 Link on Heroku => https://radiant-cliffs-02115.herokuapp.com/
-
+# Description
 This is a news blog where you can register, add news, edit, delete, and comment. Administrators can review news and edit it up to 5 times.
 
 
@@ -48,7 +48,7 @@ $ rake db:seed RAILS_ENV=test
 $ rails s
 ```
 
-# Description:
+# Attention:
 ### Welcome, daily, weekly email send only in test.
 If u want to see that email was send,  use =>  <em>Sidekiq</em>
 
