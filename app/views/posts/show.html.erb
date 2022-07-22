@@ -5,7 +5,7 @@
     <p> Дата публикации: <%= @post.created_at.strftime("%d.%m.%Y %H:%M") %><a><br> Автор: <%=@post.user.name%></a></p>
     <% if user_signed_in?  and  current_user.is_admin?%>
       <% if @post.created_at != @post.updated_at  %>
-        <p><em> Последнее обновление в <%= @post.updated_at.strftime("%d.%m.%Y %H:%M")%> пользователем: <%= @post.user_last_update %></em></p>
+        <p><em> Последнее обновление <%= @post.updated_at.strftime("%d.%m.%Y %H:%M")%>, пользователем: <%= @post.user_last_update %>.</em></p>
       <% end %>
     <% end %>
     <p> </p>

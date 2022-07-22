@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments.all
+    unset_current_editor(nil)
   end
 
   def new
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
 
   def edit
     user_name = current_user.name
-    currently_editing(current_user.id, Time.zone.now, user_name) if @post.current_editor.nil?
+    currently_editing(current_user.id, user_name) if @post.current_editor.nil?
   end
 
   def create
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
       respond_to do |format|
         if @post.current_editor == current_user.id
           if @post.update(post_params)
-            currently_editing(nil, nil)
+            currently_editing(nil)
             format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
             format.json { render :show, status: :ok, location: @post }
           else
@@ -83,10 +84,15 @@ class PostsController < ApplicationController
     end
   end
 
-  def currently_editing(editor, time, user_name = current_user.name)
+  def currently_editing(editor, user_name = current_user.name)
     @post.current_editor = editor
-    @post.editing_started_at = time
     @post.user_last_update = user_name
+    @post.save
+  end
+
+
+  def unset_current_editor(editor)
+    @post.current_editor = editor
     @post.save
   end
 
