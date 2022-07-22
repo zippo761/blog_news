@@ -16,7 +16,8 @@ class PostsController < ApplicationController
   end
 
   def edit
-    currently_editing(current_user.id, Time.zone.now) if @post.current_editor.nil?
+    user_name = current_user.name
+    currently_editing(current_user.id, Time.zone.now, user_name) if @post.current_editor.nil?
   end
 
   def create
@@ -39,19 +40,17 @@ class PostsController < ApplicationController
       respond_to do |format|
         if @post.current_editor == current_user.id
           if @post.update(post_params)
-              currently_editing(nil, nil)
-              format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
-              format.json { render :show, status: :ok, location: @post }
-            else
+            currently_editing(nil, nil)
+            format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
+            format.json { render :show, status: :ok, location: @post }
+          else
               format.html { render :edit, status: :unprocessable_entity }
               format.json { render json: @post.errors, status: :unprocessable_entity }
           end
-        else
-          redirect_to post_url(@post), alert:  'нет'
         end
       end
     else
-      redirect_to post_url(@post), alert:  'Количество редакций публикации превысило - 5'
+      redirect_to post_url(@post), alert: 'Количество редактирований публикации превысило - 5'
     end
 
   end
@@ -84,9 +83,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def currently_editing(editor, time)
+  def currently_editing(editor, time, user_name = current_user.name)
     @post.current_editor = editor
     @post.editing_started_at = time
+    @post.user_last_update = user_name
     @post.save
   end
 

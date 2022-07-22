@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_165447) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_22_083850) do
   create_table "comments", force: :cascade do |t|
     t.string "username"
     t.text "content"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_165447) do
     t.integer "current_editor"
     t.datetime "editing_started_at", precision: nil
     t.integer "lock_version"
+    t.string "user_last_update"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
