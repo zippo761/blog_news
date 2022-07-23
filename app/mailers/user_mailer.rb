@@ -3,6 +3,7 @@ class UserMailer < ApplicationMailer
   layout 'user_mailer'
 
   def welcome_email
+    # send when user finish registration
     @user = params[:user]
 
     mail(

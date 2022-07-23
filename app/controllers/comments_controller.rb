@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[update destroy]
   before_action :set_post, only: %i[edit create destroy update]
+  load_and_authorize_resource
 
   def edit
     @comment = @post.comments.find(params[:id])

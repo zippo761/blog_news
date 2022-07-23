@@ -4,23 +4,29 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    # all user:
     can :read, Post
     can :read, Comment
 
-    return unless user.present? # additional permissions for logged in users (they can read their own posts)
+    return unless user.present? # additional permissions for logged in users
 
+    # user can destroy, update only their own posts
     can :destroy, Post, user: user
     can :update, Post, user: user
     can :create, Post
 
+    # user can destroy, update only their own comments
     can [:update, :destroy], Comment do |comment|
       comment.try(:user) == user
     end
 
+    # only authorized user can create comment
     can :create, Comment
 
-    # user ||= User.new
-    #
+    # can read and update user setting only if their owner
+    can [:read, :update], User, user:user
+
+    # admin have power like Tanos
     can :manage, :all if user.is_admin?
   end
 

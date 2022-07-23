@@ -1,7 +1,12 @@
 class WeeklyDigestMailingJob < DigestMailingJob
-  def do_mailing(p_user, p_posts)
+  # TODO need refactor this class for make some logic in base class DigestMailingJob
+
+  def do_mailing(user, posts)
+    # take arguments:
+    # user: user who have subscription type - weekly
+    # posts: list of post in last 1 week
     # TODO: для deliver_later необходимо передавать сериализуемый объект (не ActiveRecord::Relation)
-    UserMailer.with(user: p_user, posts: p_posts).weekly_digest_email.deliver_now
+    UserMailer.with(user: user, posts: posts).weekly_digest_email.deliver_now
   end
 
   def perform
@@ -14,8 +19,8 @@ class WeeklyDigestMailingJob < DigestMailingJob
     @users = User.where(subscription_type: @subscr_type)
     @posts = Post.where(created_at: @from_date..@till_date)
 
-    @users.each do |r|
-      do_mailing(r, @posts) unless @posts.empty?
+    @users.each do |user|
+      do_mailing(user, @posts) unless @posts.empty?
     end
   end
 end
