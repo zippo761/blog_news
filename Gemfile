@@ -91,3 +91,6 @@ end
 group :production do
   gem 'pg'
 end
+
+# for user letter opener
+# gem "letter_opener", group: :development

@@ -50,13 +50,13 @@ $ rails s
 
 # Attention:
 ### Welcome, daily, weekly email send only in test.
-If u want to see that email was send,  use =>  <em>Sidekiq</em>
+If u want to see that email was send,  use =>  <em>Sidekiq</em> and try registry account.
 
 1) start <em>Sidekiq</em> to see  when email was send <br>
 ```
 $ sidekiq -C config/sidekiq.yaml 
 ```
-
+Digest mailing job was test with gem letter opener and its good. Now setting delivery method  = :test
 2) Visit http://127.0.0.1:3000/jobs/  for see control panel (only for admin). 
 
 ### Edit post.

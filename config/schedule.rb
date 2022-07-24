@@ -19,10 +19,10 @@ set :output, 'log/cron.log'
 
 # Learn more: http://github.com/javan/whenever
 
-every 2.minute do
+every 1.day, at: '7:00 am' do
   rake 'weekly_email:run'
 end
 
-every 1.minute do
+every 1.week, on: :monday, at: '07:00' do
   rake 'daily_email:run'
 end

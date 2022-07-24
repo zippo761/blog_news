@@ -24,6 +24,7 @@ module TestBlog
     # config.eager_load_paths << Rails.root.join("extras")
     #
     # Generate system test file
+    # config for Rspec
     config.generators.system_tests = nil
     config.generators do |g|
       g.test_framework(

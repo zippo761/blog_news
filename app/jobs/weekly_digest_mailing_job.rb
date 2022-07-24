@@ -5,7 +5,7 @@ class WeeklyDigestMailingJob < DigestMailingJob
     # take arguments:
     # user: user who have subscription type - weekly
     # posts: list of post in last 1 week
-    UserMailer.with(user: user, posts: posts).weekly_digest_email
+    UserMailer.with(user: user, posts: posts).weekly_digest_email.deliver_now
   end
 
   def perform

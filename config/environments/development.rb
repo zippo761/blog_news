@@ -38,10 +38,17 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # to see preview email uncomment this string and comment delivery method = :test
+  # config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.perform_deliveries = true
+  #
   # user sidekiq
   config.active_job.queue_adapter = :sidekiq
+
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
