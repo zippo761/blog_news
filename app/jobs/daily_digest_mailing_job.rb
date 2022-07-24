@@ -5,8 +5,7 @@ class DailyDigestMailingJob < DigestMailingJob
     # take arguments:
     # user: user who have subscription type - daily
     # posts: list of post in last 1 week
-    # TODO: для deliver_later необходимо передавать сериализуемый объект (не ActiveRecord::Relation)
-    UserMailer.with(user: user, posts: posts).daily_digest_email.deliver_now
+    UserMailer.with(user: user, posts: posts).daily_digest_email
   end
 
   def perform
@@ -14,7 +13,7 @@ class DailyDigestMailingJob < DigestMailingJob
 
     @subscr_type = 'daily'
     @till_date = Time.parse('07:00') - 1 # сегодня
-    @from_date = @till_date - 1.day + 1
+    @from_date = @till_date - 1.days + 1
 
     @users = User.where(subscription_type: @subscr_type)
     @posts = Post.where(created_at: @from_date..@till_date)

@@ -26,7 +26,7 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# erb2slib
+# erb2slim
 gem 'html2slim'
 # locale
 gem 'devise-i18n'

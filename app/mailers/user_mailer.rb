@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'info@blog-digest.test'
+  default from: 'info@Kit-Blog.test'
   layout 'user_mailer'
 
   def welcome_email
