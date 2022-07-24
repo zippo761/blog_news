@@ -56,7 +56,7 @@ If u want to see that email was send,  use =>  <em>Sidekiq</em> and try registry
 ```
 $ sidekiq -C config/sidekiq.yaml 
 ```
-Digest mailing job was test with gem letter opener and its good. Now setting delivery method  = :test
+Digest mailing job was test with gem letter opener and its good. Now setting delivery method  = :test <br>
 2) Visit http://127.0.0.1:3000/jobs/  for see control panel (only for admin). 
 
 ### Edit post.
