@@ -21,19 +21,4 @@ RSpec.describe PostsController, type: :controller do
       expect(response.status).to eq(200)
     end
   end
-
-  context 'check post title' do
-    let(:post) { Post.create(title: 'Test title', content: 'Test content') }
-    it 'should be valid' do
-      expect(post.valid?)
-    end
-
-    it 'should be valid' do
-      expect(post.title).to eq('Test title')
-    end
-
-    it 'should be valid' do
-      expect(post.content).to eq('Test content')
-    end
-  end
 end
