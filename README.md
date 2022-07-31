@@ -38,7 +38,6 @@ $ rake db:seed
 ```
 
 ## For start tests.
-The tests by default use :selenium_chrome driver <br>
 ```
 $ rake db:seed RAILS_ENV=test
 ```
