@@ -2,7 +2,6 @@ h2
   | Редактирование публикации
 - if @post.current_editor != current_user.id
   .alert.alert-danger
-
-  p
-    | Публикация в данный момент редактируется
+    p
+      | Публикация в данный момент редактируется
 = render 'posts/form', post: @post
