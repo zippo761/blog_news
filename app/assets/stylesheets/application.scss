@@ -17,5 +17,6 @@ a:not([class]):hover {
 }
 
 .card {
-    hyphens: auto
+    hyphens: auto;
+    border-style: hidden;
 }
