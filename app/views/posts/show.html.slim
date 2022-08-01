@@ -1,0 +1,28 @@
+.row.g-5.justify-content-center
+  .col-md-10
+    h2
+      = @post.title
+    p
+      |  Дата публикации: 
+      = @post.created_at.strftime("%d.%m.%Y %H:%M")
+      a
+        br
+        |  Автор: 
+        =@post.user.name
+    article
+      p
+        .card
+          = @post.content
+    .d-grid.gap-2.d-md-flex.justify-content-md-end
+      - if can? :update, @post
+        = link_to "Редактировать", edit_post_path(@post), :class => "btn btn-outline-warning btn-sm me-md-2"
+      - if can? :destroy, @post
+        = button_to "Удалить", post_path(@post), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-outline-danger btn-sm me-md-2'
+	  = link_to "Назад", :back, :class => 'btn btn-outline-dark pull-left btn-sm'
+    .row.justify-content-start
+      .comments
+        = render 'comments/comment'
+    br
+    .row
+      .col-sm-10.col-sm-offset-1.col-md-10.col-md-offset-1
+        = render 'comments/form'

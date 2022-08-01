@@ -1,0 +1,19 @@
+= form_with model: @post do |form|
+  - if @post.errors.any?
+    #error_explanation
+
+    ul
+      - @post.errors.full_messages.each do |msg|
+        .alert.alert-danger
+          = msg
+  .form-floating.mb-4.col-lg-5
+    = form.text_area :title, :class => 'form-control', :id => "floatingTextarea2"
+    label.form-label[for="floatingTextarea2"]
+      |  Заголовок 
+  .form-floating.mb-4
+    = form.text_area :content, :class => 'form-control', :id => "floatingTextarea1", :style => "height: 400px"
+    label.form-label[for="floatingTextarea1"]
+      |  Текст 
+  .d-grid.gap-2.d-md-flex.justify-content-md-start
+    = form.submit "Сохранить", :class => 'btn btn-outline-warning me-md-2'
+    = link_to "Отмена", :back, :class => 'btn btn-outline-dark'

@@ -1,0 +1,24 @@
+.row.justify-content-center
+  .col-sm-6.col-md-8
+		p.h1.fw-bold.mb-3.mx-1.mx-md-4.mt-4
+			| Пользователи
+		.row
+			.col-sm-4.col-sm-offset-1.col-md-2.col-md-offset-1
+				|  Пользователь 
+			.col-sm-3.col-md-1
+				|  Права доступа 
+		.row
+			.col-sm-10.col-sm-offset-1.col-md-4.col-md-offset-1
+				hr
+		- if !@users.empty?
+			- @users.each do |user|
+				.row
+					.col-sm-4.col-sm-offset-1.col-md-2.col-md-offset-1.mb-1
+						= user.email
+					.col-sm-3.col-md-4
+						- if user.is_admin?
+							div
+								|  Админ 
+					div.mb-3
+						= button_to 'Удалить аккаунт', user_path(user), form: { data: { turbo_confirm: "Вы уверены?" } }, method: :delete , :class => 'btn btn-danger btn-sm'
+			

@@ -1,0 +1,34 @@
+.row.justify-content-center
+  .col-sm-6.col-md-5
+    p.text-center.h1.fw-bold.mb-3.mx-1.mx-md-4.mt-4
+      |  Настройки профиля 
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field.form-group
+        = f.label :name, :class => 'control-label'
+        = f.text_field :name, :class => 'form-control'
+      .field.form-group
+        = f.label :email, "Почта", :class => 'control-label'
+        = f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control'
+      .field.form-group.mb-2
+        = f.label :subscription_type, "Тип рассылки",  :class => 'control-label'
+        = f.select :subscription_type, User.subscription_types.keys.map{ |key| [map_subscription_name(key), key] }, {}, {:class => 'form-control'}
+      .field.form-group.mb-2
+        = f.password_field :password, autocomplete: "new-password", :class => 'form-control', :id => "floatingPassword" , :placeholder => "Пароль"
+				label[for="floatingPassword"]
+                    | Пароль
+      .field.form-group.mb-2
+        = f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control', :id => "floatingPasswordConfirmation", :placeholder => "Повторите пароль"
+				label[for="floatingPasswordConfirmation"]
+                    | Повторите пароль
+      .field.form-group.mb-2
+        = f.password_field :current_password, autocomplete: "current-password", :class => 'form-control', :id => "floatingCurrentPassword", :placeholder => "Текущий пароль"
+				label[for="floatingName"]
+                    | Текущий пароль
+      .d-grid.gap-2.d-md-flex.justify-content-md-start.mb-2
+
+				.actions
+					= f.submit "Обновить", :class => 'btn btn-outline-warning'
+	.d-grid.gap-2.d-md-flex.justify-content-md
+		= button_to "Удалить аккаунт", registration_path(resource_name), form: { data: { turbo_confirm: "Вы уверены?" } }, method: 	:delete , :class => 'btn btn-outline-danger me-md-2'
+		= link_to "Назад", :back, :class => 'btn btn-outline-dark pull-right'

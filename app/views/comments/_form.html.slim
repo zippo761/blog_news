@@ -1,0 +1,10 @@
+- if user_signed_in?
+  = form_with model: [@post, @post.comments.build] do |f|
+    .form-floating
+      = f.text_area :content, :class => 'form-control', :id => "floatingTextarea", :style => "height: 150px"
+      label.form-label[for="floatingTextarea"]
+        | Текст комментария
+    br
+    .d-grid.gap-2.d-md-flex.justify-content-md-start
+      = f.submit "Добавить комментарий", :class => 'btn btn-outline-success'
+    br

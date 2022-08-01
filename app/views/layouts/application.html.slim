@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title
+      | Kit-Blog
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  body
+    header.p-2.mb-2.border-bottom.bg-light
+      .container
+        .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
+
+				a.navbar-brand[href="/"]
+					img.d-inline-block.align-text-top[src="https://img2.freepng.ru/20180713/ob/kisspng-graphic-design-logo-monogram-corporate-identity-monogram-logo-5b4838dca24641.7487994415314598046647.jpg" alt="" width="70" height="50"]
+				ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
+					= link_to "Главная страница", posts_path , class: 'nav-link px-2 link-dark'
+					- if user_signed_in?
+						= link_to "Добавить публикацию", new_post_path, class: 'nav-link px-2 link-dark'
+				- if user_signed_in?
+					.dropdown.text-end
+
+					a#dropdownUser1.d-block.link-dark.text-decoration-none.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
+						img.rounded-circle[src="https://www.sport-uray.ru/wp-content/uploads/avatar-scaled.jpeg" alt="mdo" width="40" height="37"]
+					ul.dropdown-menu.text-small[aria-labelledby="dropdownUser1"]
+						li
+							= link_to 'Редактирование профиля', edit_user_registration_path, class: 'dropdown-item'
+						- if current_user.is_admin?
+							li
+								= link_to 'Список пользователей', users_path, class: 'dropdown-item'
+						li
+						hr.dropdown-divider
+						li
+							= link_to "Выйти", destroy_user_session_path, :method => :delete, class: 'dropdown-item'
+				- else
+					= link_to 'Авторизация', new_user_session_path, class: 'nav-link px-2 link-dark'
+					= link_to 'Регистрация', new_user_registration_path, class: 'nav-link px-2 link-dark'
+    .container
+      - if notice
+        p.alert.alert-success
+          = notice
+      - if alert
+        p.alert.alert-danger
+          = alert
+      = yield

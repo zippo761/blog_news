@@ -1,0 +1,25 @@
+.row
+  .col-sm-5.mt-5.mx-auto.col-md-3.col-md-offset-5
+    p.text-center.h1.fw-bold.mb-5.mx-1.mx-md-4.mt-4
+      | Авторизация
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      - if resource.errors.any?
+        #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
+          h2
+            = pluralize(resource.errors.count, "error")
+            |  prohibited this message from being saved:
+          ul
+            - resource.errors.each do |error|
+              li
+                = error.full_message
+      .form-floating
+			= f.email_field :email, autocomplete: "email", :class => 'form-control', :id => "floatingInput",:placeholder => "name@example.com",required: true
+			label[for="floatingInput"]
+				| Почта
+      br
+			.form-floating
+				= f.password_field :password, autocomplete: "current-password", :class => 'form-control', :id => "floatingPassword", :placeholder => "Password", required: true
+				label[for="floatingPassword"]
+					| Пароль
+			br
+			= f.submit "Войти", :class => 'w-100 btn  btn-success'

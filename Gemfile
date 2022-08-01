@@ -28,6 +28,9 @@ gem 'jbuilder'
 
 # erb2slim
 gem 'html2slim'
+
+gem 'slim'
+
 # locale
 gem 'devise-i18n'
 gem 'rails-i18n'
