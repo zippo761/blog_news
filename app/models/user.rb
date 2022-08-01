@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
-  # after_create :send_welcome_email
+  after_create :send_welcome_email
   after_initialize :init
 
 
