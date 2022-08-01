@@ -43,18 +43,20 @@ class PostsController < ApplicationController
 
   def update
     if @post.count_update < 5
-      respond_to do |format|
-        if @post.current_editor == current_user.id
-          if @post.update(post_params)
-            # after update post unset current editor
-            currently_editing(nil)
-            format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
-            format.json { render :show, status: :ok, location: @post }
-          else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @post.errors, status: :unprocessable_entity }
-          end
-        end
+      if @post.current_editor == current_user.id  
+				respond_to do |format|
+					if @post.update(post_params)
+						# after update post unset current editor
+						currently_editing(nil)
+						format.html { redirect_to post_url(@post), notice: 'Публикация была обновлена' }
+						format.json { render :show, status: :ok, location: @post }
+					else
+						format.html { render :edit, status: :unprocessable_entity }
+						format.json { render json: @post.errors, status: :unprocessable_entity }
+					end
+				end
+			else
+				redirect_to post_url(@post), alert: 'Обновление публикации не возможно, в данный момент она редактируется'
       end
     else
       redirect_to post_url(@post), alert: 'Количество редактирований публикации превысило - 5'
