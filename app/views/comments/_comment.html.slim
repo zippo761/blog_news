@@ -8,9 +8,9 @@
       =comment.user.name
     = owner if @post.user_id == comment.user_id
     | :
-    br.
-		.mb-3
-    	= comment.content
+    br. 
+      .mb-1.card
+        = comment.content
     .d-grid.gap-3.d-md-flex.justify-content-md-start
       - if can? :update, comment
         = link_to 'Редактировать комментарий', edit_post_comment_path(@post, comment), :class => 'btn btn-outline-warning btn-sm me-md-2'
