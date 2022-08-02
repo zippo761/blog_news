@@ -1,4 +1,4 @@
-Link on Heroku => https://radiant-cliffs-02115.herokuapp.com/
+Link on Heroku => https://sleepy-ravine-10058.herokuapp.com/
 # Description
 This is a news blog where you can register, add news, edit, delete, and comment. Administrators can review news and edit it up to 5 times.
 
