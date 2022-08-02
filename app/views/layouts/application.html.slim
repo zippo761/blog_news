@@ -8,13 +8,14 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    = favicon_link_tag 'https://toppng.com/uploads/preview/meowcute-kitten-pusheen-pixel-art-11563351707f63nqsgptr.png'
   body
     header.p-2.mb-2.border-bottom.bg-light
       .container
         .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
 
-				a.navbar-brand[href="/"]
-					img.d-inline-block.align-text-top[src="https://img2.freepng.ru/20180713/ob/kisspng-graphic-design-logo-monogram-corporate-identity-monogram-logo-5b4838dca24641.7487994415314598046647.jpg" alt="" width="70" height="50"]
+				p.text-start.h2.fw-bold.mb-5.mx-1.mx-md-4.mt-4
+                    | Kit-Blog
 				ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
 					= link_to "Главная страница", posts_path , class: 'nav-link px-2 link-dark'
 					- if user_signed_in?
