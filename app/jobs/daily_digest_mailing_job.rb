@@ -9,7 +9,6 @@ class DailyDigestMailingJob < DigestMailingJob
   end
 
   def perform
-    super
 
     @subscr_type = 'daily'
     @till_date = Time.parse('07:00') - 1 # сегодня
